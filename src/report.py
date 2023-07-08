@@ -7,7 +7,6 @@ from src.history import notes
 report = Blueprint('report', __name__, url_prefix="/report")
 @report.get('/daily')
 def generate_daily_report():
-    notes.append('today I am happy since I went to gym')
     report = get_daily_report()['choices'][0]['message']['content']
     save = save_to_notion(datetime.now().date(), report)
     return save

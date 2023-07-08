@@ -44,4 +44,4 @@ def save_to_notion(current_date, content):
     'Notion-Version': '2022-06-28'
 }
     response = requests.post('https://api.notion.com/v1/pages', headers=headers, json=json)
-    return response
+    return "success to Notion"
