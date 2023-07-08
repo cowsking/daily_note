@@ -1,21 +1,22 @@
 from flask import Blueprint, request
 import requests
+from src.history import notes
+
+send = Blueprint('send', __name__, url_prefix="/send")
 
 
-auth = Blueprint('auth', __name__, url_prefix="/send")
-
-
-@auth.post('/text')
-def chat():
+@send.post('/text')
+def send_text():
     request_data = request.get_json()
     content = request_data['content']
-
+    notes.append(content)
     headers = {
     'Content-type': 'application/json'
     }
     data = {
     'content': '#inbox\n{}'.format(content)
     }
+
 
     # 发送 POST 请求
     response = requests.post(
@@ -26,3 +27,8 @@ def chat():
 
     return result
 
+@send.get('/out')
+def out():
+    return notes[-1]
+
+    
