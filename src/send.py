@@ -1,6 +1,5 @@
 from flask import Blueprint, request
 import requests
-from src.history import notes
 from src.database.database import db
 send = Blueprint('send', __name__, url_prefix="/send")
 from datetime import datetime
@@ -35,8 +34,6 @@ def send_text():
             
     return result
 
-@send.get('/out')
-def out():
-    return notes[-1]
+
 
     
