@@ -8,7 +8,6 @@ from datetime import datetime
 def send_text():
     request_data = request.get_json()
     content = request_data['content']
-    notes.append(content)
     headers = {
     'Content-type': 'application/json'
     }
