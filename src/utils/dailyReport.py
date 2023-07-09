@@ -16,11 +16,9 @@ def get_daily_report():
 
     Thanks!
 
-    
-
-Thanks!
 
     '''.format(str(current_date), '\n'.join(notes))
+    print(tempate)
     message=[{"role": "user", "content": tempate}]
     response = openai.ChatCompletion.create(
             model="gpt-4",

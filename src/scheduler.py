@@ -14,5 +14,5 @@ def clear_history():
 scheduler = BackgroundScheduler()
 
 # 添加定时任务，每天11:30执行
-scheduler.add_job(clear_history, 'cron', hour=23, minute=40)
+scheduler.add_job(clear_history, 'cron', hour=23, minute=51)
 

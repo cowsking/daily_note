@@ -17,7 +17,6 @@ def create_app(test_config=None):
     app.register_blueprint(report)
 
     # 启动定时任务
-    if not scheduler.running:
-        scheduler.start()
+    scheduler.start()
 
     return app
