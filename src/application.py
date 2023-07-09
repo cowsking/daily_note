@@ -3,7 +3,7 @@ from src.send import send
 from src.report import report
 from flask_cors import CORS
 from src.scheduler import scheduler
-
+import os
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     cors = CORS(app, resources={r"/*": {"origins": "*"}})

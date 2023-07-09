@@ -1,9 +1,9 @@
 from flask import Blueprint, request
 import requests
 from src.history import notes
-
+from src.database.database import db
 send = Blueprint('send', __name__, url_prefix="/send")
-
+from datetime import datetime
 
 @send.post('/text')
 def send_text():
@@ -24,7 +24,15 @@ def send_text():
 
     # 获取响应内容
     result = response.json()
+    with db:
+        with db.cursor() as cursor:
+            insert_query = "INSERT INTO notes (date, note) VALUES (%s, %s)"
 
+            values = (str(datetime.now().date()), content)
+
+            cursor.execute(insert_query, values)
+
+            
     return result
 
 @send.get('/out')
